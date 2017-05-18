@@ -1,6 +1,7 @@
 import tweepy
 #import requests
 from configs import *
+from helpers import *
 
 class BotStreamer(tweepy.StreamListener):
 
@@ -8,7 +9,11 @@ class BotStreamer(tweepy.StreamListener):
         username = status.user.screen_name
         status_id = status.id
 
-        tweet_echo(username, status_id)
+        if not isinside(username, 'username-blacklist.txt'):
+            tweet_echo(username, status_id)
+        else:
+            print('abusive username')
+
 
 
 def tweet_echo(username, status_id):
