@@ -1,0 +1,6 @@
+version: '2'
+services:
+    bot:
+        image: svenmalvik/tweepy
+        volumes:
+            - "./app:/usr/src/app"
